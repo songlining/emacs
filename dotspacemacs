@@ -338,24 +338,41 @@ you should place your code here."
   (setq dired-listing-switches "-aBhl --group-directories-first")
   (setq org-agenda-files (list "~/Dropbox/org"))
   (setq org-capture-templates
-        '(
-	        ("t" "Todo-Work" entry (file+headline "~/Dropbox/org/index.org" "Tasks")
-	         "* TODO %?\n")
-          ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org")
-	         "* %?\nEntered on %U\n")
-          ("v" "Vocabulary" entry (file+headline "~/Dropbox/org/vocabulary.org" "Vocabulary")  
-	         "")
-	        ("s" "ScienceLogic" entry (file+headline "~/Dropbox/org/misc.org" "Misc")
-	         "** %?\n")
-	        ("c" "Customers" entry (file+headline "~/Dropbox/org/customers.org" "Customers")
-	         "** %?\n")
-	        ("h" "Hobby" entry (file+headline "~/Dropbox/org/hobby.org" "Tips")
-	         "** %?\n")
-	        ("e" "Emacs" entry (file+headline "~/Dropbox/org/emacs.org" "Tips")
-	         "")
-	        ("p" "Todo-Personal" entry (file+headline "~/Dropbox/org/gtd_personal.org" "Tasks")
-	         "* TODO %?\n  %i\n  %a")
-	        ))
+    '(("n" "Random notes" entry
+       (file "~/Dropbox/org/index.org")
+       "* %?")
+      ("t" "Todo-Work" entry
+       (file+headline "~/Dropbox/org/index.org" "Tasks")
+       "* TODO %?
+")
+      ("j" "Journal" entry
+       (file+olp+datetree "~/Dropbox/org/journal.org")
+       "* %?
+Entered on %U
+")
+      ("v" "Vocabulary" entry
+       (file+headline "~/Dropbox/org/vocabulary.org" "Vocabulary")
+       "")
+      ("s" "ScienceLogic" entry
+       (file+headline "~/Dropbox/org/misc.org" "Misc")
+       "** %?
+")
+      ("c" "Customers" entry
+       (file+headline "~/Dropbox/org/customers.org" "Customers")
+       "** %?
+")
+      ("h" "Hobby" entry
+       (file+headline "~/Dropbox/org/hobby.org" "Tips")
+       "** %?
+")
+      ("e" "Emacs" entry
+       (file+headline "~/Dropbox/org/emacs.org" "Tips")
+       "")
+      ("p" "Todo-Personal" entry
+       (file+headline "~/Dropbox/org/gtd_personal.org" "Tasks")
+       "* TODO %?
+  %i
+  %a")) t)
 
   (setq org-todo-keywords
         '((sequence "TODO" "WORKING ON"  "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED" "LATER")))
@@ -395,11 +412,12 @@ This function is called at the very end of Spacemacs initialization."
  '(helm-completion-style 'emacs)
  '(org-refile-targets '((org-agenda-files :maxlevel . 3)))
  '(org-refile-use-outline-path nil)
- )
+ '(package-selected-packages
+   '(tern zenburn-theme zen-and-art-theme yapfify yaml-mode xterm-color ws-butler writeroom-mode winum white-sand-theme which-key web-mode web-beautify vterm volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toxi-theme toc-org terminal-here tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit symon symbol-overlay sunny-day-theme sublime-themes subatomic256-theme subatomic-theme string-inflection string-edit sphinx-doc spaceline-all-the-icons spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle slim-mode shell-pop seti-theme scss-mode sass-mode reverse-theme restart-emacs rebecca-theme rainbow-delimiters railscasts-theme quickrun pytest pyenv-mode py-isort purple-haze-theme pug-mode professional-theme prettier-js powershell popwin poetry planet-theme pippel pipenv pip-requirements phpunit phpcbf phpactor php-extras php-auto-yasnippets phoenix-dark-pink-theme phoenix-dark-mono-theme pcre2el password-generator paradox overseer orgit-forge organic-green-theme org-tree-slide org-superstar org-rich-yank org-re-reveal org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme npm-mode nose nodejs-repl noctilux-theme naquadah-theme nameless mustang-theme multi-term multi-line monokai-theme monochrome-theme molokai-theme moe-theme modus-vivendi-theme modus-operandi-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-svn madhat2r-theme macrostep lush-theme lorem-ipsum livid-mode live-py-mode link-hint light-soap-theme kaolin-themes json-navigator json-mode js2-refactor js-doc jbeans-theme jazz-theme ir-black-theme inkpot-theme info+ indent-guide importmagic impatient-mode hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md geben gandalf-theme font-lock+ flycheck-pos-tip flycheck-package flycheck-elsa flx-ido flatui-theme flatland-theme farmhouse-theme fancy-battery eziam-theme eyebrowse expand-region exotica-theme evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu espresso-theme eshell-z eshell-prompt-extras esh-help emr emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode drag-stuff dracula-theme dotenv-mode doom-themes django-theme dired-quick-sort diminish define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme cython-mode cyberpunk-theme csv-mode column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme clean-aindent-mode chocolate-theme cherry-blossom-theme centered-cursor-mode busybee-theme bubbleberry-theme bmx-mode blacken birds-of-paradise-plus-theme badwolf-theme auto-highlight-symbol auto-compile apropospriate-theme anti-zenburn-theme anaconda-mode ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme ace-link ace-jump-helm-line)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil)))))
+ )
 )
